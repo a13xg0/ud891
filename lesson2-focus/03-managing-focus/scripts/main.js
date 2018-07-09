@@ -26,7 +26,7 @@ page('/:slug', function(context) {
     return;
   }
   // manage focus
-   var newPageTitle = newPage.querySelector('main [data-page='+slug+'] h2');
+   var newPageTitle = newPage.querySelector('h2');
    newPageTitle.focus();
 
 });
