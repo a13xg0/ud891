@@ -24,6 +24,7 @@
     this.el.addEventListener('click', this.handleClick.bind(this));
 
     // Any more initialization to do here?
+    this.el.setAttribute('role', 'readiogroup');
 
     var firstButton = true;
     for (var button of this.buttons) {
@@ -35,6 +36,9 @@
       }
 
       // What about here?
+      button.setAttribute('role', 'radio')
+      button.setAttribute('aria-checked','false');
+
     }
 
   }
@@ -92,12 +96,14 @@
     // Set the old button to tabindex -1
     this.focusedButton.tabIndex = -1;
     this.focusedButton.removeAttribute('checked');
+    this.focusedButton.setAttribute('aria-checked', 'false');
 
     // Set the new button to tabindex 0 and focus it
     this.focusedButton = this.buttons[this.focusedIdx];
     this.focusedButton.tabIndex = 0;
     this.focusedButton.focus();
     this.focusedButton.setAttribute('checked', '');
+    this.focusedButton.setAttribute('aria-checked', 'true');
 
     // ... we probably want to do some stuff here, too ...
 
